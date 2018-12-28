@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Dashboard () {
+export default function Questions () {
   return (
   	<div>
-  		Home
+  		Questions
   	</div>
   )
 }

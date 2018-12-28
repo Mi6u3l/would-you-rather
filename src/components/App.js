@@ -5,7 +5,7 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Menu from './Menu'
 import Login from './Login'
-import Dashboard from './Dashboard'
+import Questions from './Questions'
 import NewPoll from './NewPoll'
 
 
@@ -21,7 +21,7 @@ class App extends Component {
           <Menu />
           {this.props.authedUser ?
             <div className='text-center'>
-              <Route path='/' exact component={Dashboard} />
+              <Route exact path='/' component={Questions} />
               <Route path='/add' component={NewPoll} />
             </div>
             : <Login />

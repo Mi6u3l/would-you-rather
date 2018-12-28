@@ -16,15 +16,10 @@ class Menu extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem componentClass={Link} href='/' to='/'>Dashboard</NavItem>
+          <NavItem componentClass={Link} href='/' to='/'>Home</NavItem>
           <NavItem componentClass={Link} href='/add' to='/add'>New Question</NavItem>
         </Nav>
-        <Navbar.Text pullRight>
-          {currentUser 
-            ? <Welcome currentUser={currentUser} />
-            : ''
-          }
-        </Navbar.Text>
+        {currentUser ? <Welcome currentUser={currentUser} /> : ''}    
       </Navbar>
     )
   }

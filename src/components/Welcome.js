@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 
@@ -13,10 +12,13 @@ class Welcome extends Component {
     const { currentUser } = this.props
 
     return (
-      <Fragment>
-        Welcome {currentUser.name}
-        &nbsp;<a href='#' onClick={this.logout}>Logout</a>
-      </Fragment>
+      <div className='welcome'>
+        <div className='welcome__paragraph'>
+          Welcome {currentUser.name}
+        </div>
+        <img className='welcome__avatar' src={require(`../avatars/${currentUser.avatarURL}`)} alt='avatar' />
+        <span className='welcome__logout' onClick={this.logout}>Logout</span>
+      </div>
     )
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect } from 'react-router-dom'
+
 
 class Login extends Component {
 	state = {
@@ -17,7 +17,7 @@ class Login extends Component {
 	  return (
 	  	<div className='text-center'>
 		  	<h3>
-		    		Please Login
+		    	Please Login
 		    </h3>
 		  	<DropdownButton
 	      	title='Select user'
