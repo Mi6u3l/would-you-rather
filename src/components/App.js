@@ -1,28 +1,40 @@
 import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
+import Menu from './Menu'
+import Login from './Login'
+import Dashboard from './Dashboard'
+import NewPoll from './NewPoll'
+
 
 class App extends Component {
   componentDidMount() {
-  	let authedID = 'tylermcginnis'
-    this.props.dispatch(handleInitialData(authedID))
+    this.props.dispatch(handleInitialData())
   }
   render() {
     return (
-    	<Fragment>
-      	<LoadingBar />
-      	<div>
-      		Hello
-      	</div>
-      </Fragment>
+      <Router>
+      	<Fragment>
+        	<LoadingBar />
+          <Menu />
+          {this.props.authedUser ?
+            <div className='text-center'>
+              <Route path='/' exact component={Dashboard} />
+              <Route path='/add' component={NewPoll} />
+            </div>
+            : <Login />
+          }
+        </Fragment>
+      </Router>
     )
   }
 }
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 
