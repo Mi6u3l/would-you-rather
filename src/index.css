@@ -13,6 +13,12 @@ code {
     monospace;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
 .welcome {
   display: inline-flex;
   position: absolute;
@@ -36,3 +42,78 @@ code {
   border-radius: 2rem; 
   margin: 0 1rem 0 1rem;
 }
+
+.questions-list {
+  text-align: center;
+  margin: auto;
+  width: 48rem;
+
+}
+
+.questions-list__tabs {
+  /*display: inline-block;*/
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 48rem;
+}
+
+.questions-list__tabs button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1.5rem 1.5rem;
+  transition: 0.3s;
+  font-size: 1.5rem;
+  width: 23.9rem;
+}
+
+.questions-list__tabs button:hover {
+  background-color: #ddd;
+}
+
+.questions-list__tabs--active {
+  background-color: #ccc !important;
+}
+
+.questions-list__tabs-content {
+  padding: 1rem 1rem;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 48rem;
+}
+
+.question {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  height: 14rem;
+}
+
+.question__author {
+  border-bottom: 1px solid #ccc;
+  background-color: #ddd;
+  height: 4rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.question__details {
+  display: inline-flex;
+}
+
+
+.question__avatar img  {
+  width: 7rem;
+  margin: 1.5rem 0 0 2.5rem;
+  border-radius: 50%
+}
+
+.question__poll {
+  width: 34rem;
+  margin-left: 2rem;
+  text-align: center;
+}
+
+

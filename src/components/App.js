@@ -5,8 +5,8 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Menu from './Menu'
 import Login from './Login'
-import Questions from './Questions'
-import NewPoll from './NewPoll'
+import QuestionsList from './QuestionsList'
+import NewQuestion from './NewQuestion'
 
 
 class App extends Component {
@@ -21,8 +21,8 @@ class App extends Component {
           <Menu />
           {this.props.authedUser ?
             <div className='text-center'>
-              <Route exact path='/' component={Questions} />
-              <Route path='/add' component={NewPoll} />
+              <Route exact path='/' component={QuestionsList} />
+              <Route path='/add' component={NewQuestion} />
             </div>
             : <Login />
           }

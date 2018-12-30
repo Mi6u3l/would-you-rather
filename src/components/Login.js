@@ -5,9 +5,6 @@ import { setAuthedUser } from '../actions/authedUser'
 
 
 class Login extends Component {
-	state = {
-  	toHome: false,
-	}
 	handleSelect = (authedId) => {
 	 	const { dispatch } = this.props
 
