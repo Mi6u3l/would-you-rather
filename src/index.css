@@ -39,7 +39,7 @@ ul {
 .welcome__avatar {
   width: 3rem;
   height: 2.5rem;
-  border-radius: 2rem; 
+  border-radius: 50%; 
   margin: 0 1rem 0 1rem;
 }
 
@@ -114,6 +114,15 @@ ul {
   width: 34rem;
   margin-left: 2rem;
   text-align: center;
+}
+
+.view-question-title {
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.view-question-option {
+  padding-bottom: 1rem;
 }
 
 

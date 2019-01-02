@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import QuestionPeek from './QuestionPeek'
 
 class Question extends Component {
   render() {
-    const { question, users } = this.props;
-    const user = users.find((user) => question.author === user.id)
+    const { question, user } = this.props;
     return (
       <div className='question'>
         <div className='question__author'>
@@ -15,7 +15,7 @@ class Question extends Component {
             <img src={require(`../avatars/${user.avatarURL}`)} alt='avatar' />
           </div>
           <div className='question__poll'>
-            hello
+            <QuestionPeek question={question} />
           </div>
         </div>
       </div>
@@ -23,10 +23,18 @@ class Question extends Component {
   } 
 }
 
-function mapStateToProps ({ users }) {
- return {
-   users: Object.keys(users).map((userId) => users[userId])
- }
+function mapStateToProps ({ users, questions }, props) {
+  const { id } = props
+
+  return {
+    user: Object.keys(users)
+          .map((userId) => users[userId])
+          .find((user) => user.id === questions[id].author),
+    question: Object.keys(questions)
+              .map((questionId) => questions[questionId])
+              .find((question) => question.id === id),
+
+  }
 }
 
 export default connect(mapStateToProps)(Question) 

@@ -13,7 +13,7 @@ class QuestionsList extends Component {
     }))
   }
   render() {
-  	const { answeredQuestions, notAnsweredQuestions } = this.props
+  	const { answeredQuestionIds, unAnsweredQuestionIds } = this.props
   	return (
     	<div className='questions-list'>
     	  <div className='questions-list__tabs'>
@@ -26,11 +26,11 @@ class QuestionsList extends Component {
 				</div>
 				{ this.state.showAnswered ?
 					<div className='questions-list__tabs-content'>
-				  	{answeredQuestions.length > 0 ?
+				  	{answeredQuestionIds.length > 0 ?
 							<ul>
-	         			{answeredQuestions.map((question) => (
-	           			<li key={question.id}>
-	             			<Question question={question} />
+	         			{answeredQuestionIds.map((id) => (
+	           			<li key={id}>
+	             		  <Question id={id} />
 	           			</li>
 	         			))}
 	       			</ul>
@@ -38,11 +38,11 @@ class QuestionsList extends Component {
 					</div>
 					:
 					<div className='questions-list__tabs-content'>
-				  	{notAnsweredQuestions.length > 0 ?
+				  	{unAnsweredQuestionIds.length > 0 ?
 					  	<ul>
-	         			{notAnsweredQuestions.map((question) => (
-	           			<li key={question.id}>
-	             			<Question question={question} />
+	         			{unAnsweredQuestionIds.map((id) => (
+	           			<li key={id}>
+	             			<Question id={id} />
 	           			</li>
 	         			))}
 	       			</ul>
@@ -55,14 +55,19 @@ class QuestionsList extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions }) {
- const questionsList = Object.keys(questions)
+ const orderedQuestionsId = Object.keys(questions)
    		.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-   		.map((id) => questions[id])
+
+ const answeredQuestionIds = orderedQuestionsId
+ 			.filter((id) => questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser))
+
+ const unAnsweredQuestionIds = orderedQuestionsId
+ 			.filter((id) => !questions[id].optionOne.votes.includes(authedUser) && !questions[id].optionTwo.votes.includes(authedUser))
+
 
  return {
- 	answeredQuestions: questionsList.filter((question) => question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)),
- 	notAnsweredQuestions: questionsList.filter((question) => !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)),
-
+ 	answeredQuestionIds,
+ 	unAnsweredQuestionIds
  }
 }
 
