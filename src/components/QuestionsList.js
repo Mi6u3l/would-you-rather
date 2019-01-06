@@ -30,7 +30,7 @@ class QuestionsList extends Component {
 							<ul>
 	         			{answeredQuestionIds.map((id) => (
 	           			<li key={id}>
-	             		  <Question id={id} />
+	             		  <Question showPeekQuestion={true} id={id} />
 	           			</li>
 	         			))}
 	       			</ul>
@@ -42,7 +42,7 @@ class QuestionsList extends Component {
 					  	<ul>
 	         			{unAnsweredQuestionIds.map((id) => (
 	           			<li key={id}>
-	             			<Question id={id} />
+	             			<Question showPeekQuestion={true} id={id} />
 	           			</li>
 	         			))}
 	       			</ul>
@@ -55,13 +55,13 @@ class QuestionsList extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions }) {
- const orderedQuestionsId = Object.keys(questions)
+ const orderedQuestionsIds = Object.keys(questions)
    		.sort((a,b) => questions[b].timestamp - questions[a].timestamp)
 
- const answeredQuestionIds = orderedQuestionsId
+ const answeredQuestionIds = orderedQuestionsIds
  			.filter((id) => questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser))
 
- const unAnsweredQuestionIds = orderedQuestionsId
+ const unAnsweredQuestionIds = orderedQuestionsIds
  			.filter((id) => !questions[id].optionOne.votes.includes(authedUser) && !questions[id].optionTwo.votes.includes(authedUser))
 
 

@@ -19,6 +19,19 @@ ul {
   text-align: left;
 }
 
+.loading-bar {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center 0px;
+  transition: transform 800ms linear 0s;
+  width: 100%;
+  will-change: transform, opacity;
+  height: 0.3rem;
+  background-color: blue;
+  position: absolute;
+  z-index: 1;
+}
+
 .welcome {
   display: inline-flex;
   position: absolute;
@@ -51,7 +64,6 @@ ul {
 }
 
 .questions-list__tabs {
-  /*display: inline-block;*/
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
@@ -88,7 +100,6 @@ ul {
 .question {
   border: 1px solid #ccc;
   margin-bottom: 1rem;
-  height: 14rem;
 }
 
 .question__author {
@@ -110,9 +121,9 @@ ul {
   border-radius: 50%
 }
 
-.question__poll {
+.question__view {
   width: 34rem;
-  margin-left: 2rem;
+  margin: 0 0  1rem 2rem;
   text-align: center;
 }
 
@@ -125,4 +136,25 @@ ul {
   padding-bottom: 1rem;
 }
 
+.question-page {
+  margin: 0 40rem 0 40rem
+}
 
+.question-answer {
+  margin-left: 7rem;
+}
+
+.question-answer__question-title {
+  text-align: left;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.question-answer__options {
+    text-align: left;
+}
+
+.question-answer__submit {
+    text-align: left;
+    margin-bottom: 1rem;
+}

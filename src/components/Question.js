@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionPeek from './QuestionPeek'
+import QuestionAnswer from './QuestionAnswer'
+import QuestionPoll from './QuestionPoll'
 
 class Question extends Component {
   render() {
-    const { question, user } = this.props;
+    const { questions, users, showPeekQuestion, id, authedUser } = this.props;
     return (
       <div className='question'>
         <div className='question__author'>
-          { user.name } asks:
+          { users[questions[id].author].name } asks:
         </div>
         <div className='question__details'>
           <div className='question__avatar'>
-            <img src={require(`../avatars/${user.avatarURL}`)} alt='avatar' />
+            <img src={require(`../avatars/${users[questions[id].author].avatarURL}`)} alt='avatar' />
           </div>
-          <div className='question__poll'>
-            <QuestionPeek question={question} />
+          <div className='question__view'>
+            { showPeekQuestion 
+              ? <QuestionPeek question={questions[id]} />
+              : questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser)
+                  ? <QuestionPoll question={questions[id]} />
+                  : <QuestionAnswer question={questions[id]} />
+            }
           </div>
         </div>
       </div>
@@ -23,17 +30,11 @@ class Question extends Component {
   } 
 }
 
-function mapStateToProps ({ users, questions }, props) {
-  const { id } = props
-
+function mapStateToProps ({ users, questions, authedUser }) {
   return {
-    user: Object.keys(users)
-          .map((userId) => users[userId])
-          .find((user) => user.id === questions[id].author),
-    question: Object.keys(questions)
-              .map((questionId) => questions[questionId])
-              .find((question) => question.id === id),
-
+    users,
+    questions,
+    authedUser
   }
 }
 

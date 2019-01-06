@@ -5,8 +5,8 @@ class QuestionPage extends Component {
   render() {
     const { id } = this.props.match.params
     return (
-      <div>
-        <Question id={id} />
+      <div className='question-page'>
+        <Question showPeekQuestion={false} id={id} />
       </div>
     )
   } 

@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <Router>
       	<Fragment>
-        	<LoadingBar />
+        	<LoadingBar className='loading-bar' />
           <Menu />
           {this.props.authedUser ?
             <div className='text-center'>
