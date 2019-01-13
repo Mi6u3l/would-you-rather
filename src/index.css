@@ -158,3 +158,15 @@ ul {
     text-align: left;
     margin-bottom: 1rem;
 }
+
+.question-poll {
+}
+
+.question-poll__title {
+  font-weight: bold;
+  font-size:2rem
+}
+
+.question-poll__result {
+  font-weight: bold;
+}

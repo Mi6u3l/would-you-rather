@@ -28,7 +28,7 @@ class QuestionAnswer extends Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question } = this.props
     return (
       <div className='question-answer'>
         <div className='question-answer__question-title'>
@@ -37,10 +37,10 @@ class QuestionAnswer extends Component {
         <form onSubmit={this.handleAnswer}>
           <div className='question-answer__options'>
             <Radio name='pollOption' value='optionOne' defaultChecked onChange={this.handleChange}>
-              {question.optionOne.text}
+              {question.optionOne.text}?
             </Radio>
             <Radio name='pollOption' value='optionTwo' onChange={this.handleChange}>
-              {question.optionTwo.text}
+              {question.optionTwo.text}?
             </Radio>
           </div>
           <div className='question-answer__submit'>
@@ -54,10 +54,5 @@ class QuestionAnswer extends Component {
   } 
 }
 
-function mapStateToProps ({ authedUser }) {
- return {
-   authedUser
- }
-}
 
-export default connect(mapStateToProps)(QuestionAnswer)
+export default connect()(QuestionAnswer)

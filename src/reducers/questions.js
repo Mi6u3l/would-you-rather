@@ -8,7 +8,6 @@ export default function questions (state = {}, action) {
        	...action.questions
      	}
     case ANSWER_QUESTION :
-    console.log('statey', state)
     	return {
     		...state,
     		[action.qid]: {
