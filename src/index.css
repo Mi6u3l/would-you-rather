@@ -159,9 +159,6 @@ ul {
     margin-bottom: 1rem;
 }
 
-.question-poll {
-}
-
 .question-poll__title {
   font-weight: bold;
   font-size:2rem
@@ -169,4 +166,15 @@ ul {
 
 .question-poll__result {
   font-weight: bold;
+}
+
+.question-add input {
+  width: 24rem;
+  margin: 1rem 0 1rem 0;
+  text-align: center;
+}
+
+.question-add__header {
+  font-weight: bold;
+  font-size: 2rem;
 }
