@@ -1,5 +1,6 @@
 import { saveQuestionAnswer, saveQuestion } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { addUserAnswer } from './users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
@@ -44,9 +45,11 @@ function answerQuestion ({ authedUser, qid, answer }) {
 	}
 }
 
+
 export function handleAnswerQuestion (info) {
 	return (dispatch) => {
  		dispatch(answerQuestion(info))
+    dispatch(addUserAnswer(info))
 
   	return saveQuestionAnswer(info)
    		.catch((e) => {
