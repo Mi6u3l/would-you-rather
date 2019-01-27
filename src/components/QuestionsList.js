@@ -7,10 +7,14 @@ class QuestionsList extends Component {
     showAnswered: false
   };
   toggleTab = (e, tab) => {
-    const showAnswered = tab === "answered" ? true : false;
-    this.setState(() => ({
-      showAnswered
-    }));
+    const showAnswered = (tab === "answered");
+    this.setState(prevState => {
+      if(prevState.showAnswered !== showAnswered) {
+        return {
+          showAnswered
+        }
+      }
+    })
   };
   render() {
     const { answeredQuestionIds, unAnsweredQuestionIds } = this.props;
