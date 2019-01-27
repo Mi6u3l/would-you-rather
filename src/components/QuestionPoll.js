@@ -3,11 +3,13 @@ import React, { Component } from "react";
 class QuestionPoll extends Component {
   render() {
     const { question, authedUser } = this.props;
+    const totalVotes =
+      question.optionOne.votes.length + question.optionTwo.votes.length;
     const answerOnePercentage = Math.floor(
-      (question.optionOne.votes.length / 3) * 100
+      (question.optionOne.votes.length / totalVotes) * 100
     );
     const answerTwoPercentage = Math.floor(
-      (question.optionTwo.votes.length / 3) * 100
+      (question.optionTwo.votes.length / totalVotes) * 100
     );
     return (
       <div className="question-poll">
