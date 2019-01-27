@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import QuestionPeek from "./QuestionPeek";
 import QuestionAnswer from "./QuestionAnswer";
 import QuestionPoll from "./QuestionPoll";
+import Avatar from "./Avatar";
 
 class Question extends Component {
   render() {
@@ -16,14 +17,7 @@ class Question extends Component {
               {users[questions[id].author].name} asks:
             </div>
             <div className="question__details">
-              <div className="question__avatar">
-                <img
-                  src={require(`../avatars/${
-                    users[questions[id].author].avatarURL
-                  }`)}
-                  alt="avatar"
-                />
-              </div>
+              <Avatar user={users[questions[id].author]} />
               <div className="question__view">
                 {showPeekQuestion ? (
                   <QuestionPeek question={questions[id]} />

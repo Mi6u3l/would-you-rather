@@ -8,6 +8,7 @@ import Login from "./Login";
 import QuestionsList from "./QuestionsList";
 import NewQuestion from "./NewQuestion";
 import QuestionPage from "./QuestionPage";
+import LeaderBoard from "./LeaderBoard";
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
             <div className="text-center">
               <Route exact path="/" component={QuestionsList} />
               <Route path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={LeaderBoard} />
               <Route path="/questions/:id" component={QuestionPage} />
             </div>
           ) : (

@@ -18,6 +18,7 @@ class Menu extends Component {
         <Nav>
           <NavItem componentClass={Link} href='/' to='/'>Home</NavItem>
           <NavItem componentClass={Link} href='/add' to='/add'>New Question</NavItem>
+          <NavItem componentClass={Link} href='/leaderboard' to='/leaderboard'>Leaderboard</NavItem>
         </Nav>
         {currentUser ? <Welcome currentUser={currentUser} /> : ''}    
       </Navbar>
