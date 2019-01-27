@@ -8,22 +8,30 @@ class Menu extends Component {
   render() {
     const { users, authedUser } = this.props;
     const currentUser = users.find(user => user.id === authedUser);
+    const navLinks = () => {
+      const links = [
+        ["/", "Home"],
+        ["/add", "New Question"],
+        ["/leaderboard", "Leaderboard"]
+      ];
+      return links.map(link => (
+        <NavItem
+          componentClass={Link}
+          key={link[1]}
+          href={link[0]}
+          to={link[0]}
+        >
+          {link[1]}
+        </NavItem>
+      ));
+    };
+
     return (
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>Would you rather</Navbar.Brand>
         </Navbar.Header>
-        <Nav>
-          <NavItem componentClass={Link} href="/" to="/">
-            Home
-          </NavItem>
-          <NavItem componentClass={Link} href="/add" to="/add">
-            New Question
-          </NavItem>
-          <NavItem componentClass={Link} href="/leaderboard" to="/leaderboard">
-            Leaderboard
-          </NavItem>
-        </Nav>
+        <Nav>{navLinks()}</Nav>
         {currentUser ? <Welcome currentUser={currentUser} /> : ""}
       </Navbar>
     );

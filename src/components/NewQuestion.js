@@ -7,18 +7,11 @@ class NewQuestion extends Component {
     optionOneText: "",
     optionTwoText: ""
   };
-  handleOptionOneTextChange = e => {
-    const optionOneText = e.target.value;
+  handleChange = e => {
+    const { value, name } = e.target;
 
     this.setState(() => ({
-      optionOneText
-    }));
-  };
-  handleOptionTwoTextChange = e => {
-    const optionTwoText = e.target.value;
-
-    this.setState(() => ({
-      optionTwoText
+      [name]: value
     }));
   };
   handleSubmit = e => {
@@ -43,8 +36,9 @@ class NewQuestion extends Component {
               <input
                 type="text"
                 value={optionOneText}
+                name={'optionOneText'}
                 placeholder="Enter option one text here"
-                onChange={this.handleOptionOneTextChange}
+                onChange={this.handleChange}
               />
             </div>
             <div>OR</div>
@@ -52,8 +46,9 @@ class NewQuestion extends Component {
               <input
                 type="text"
                 value={optionTwoText}
+                name={'optionTwoText'}
                 placeholder="Enter option two text here"
-                onChange={this.handleOptionTwoTextChange}
+                onChange={this.handleChange}
               />
             </div>
             <button
