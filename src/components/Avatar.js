@@ -1,15 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Avatar extends Component {
-  render() {
-    const { user } = this.props;
-
-    return (
-      <div className="question__avatar">
-        <img src={require(`../avatars/${user.avatarURL}`)} alt="avatar" />
-      </div>
-    );
-  }
-}
+const Avatar = ({ user: { avatarURL } }) => (
+  <div className="question__avatar">
+    <img src={require(`../avatars/${avatarURL}`)} alt="avatar" />
+  </div>
+);
 
 export default Avatar;
