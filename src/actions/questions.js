@@ -1,10 +1,7 @@
 import { saveQuestionAnswer, saveQuestion } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
 import { addUserAnswer, addUserQuestion } from "./users";
-
-export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
-export const ANSWER_QUESTION = "ANSWER_QUESTION";
-export const ADD_QUESTION = "ADD_QUESTION";
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION, ADD_QUESTION } from "./actionTypes";
 
 function addQuestion(question) {
   return {
