@@ -8,10 +8,9 @@ import Avatar from "./Avatar";
 class Question extends Component {
   render() {
     const { questions, users, showPeekQuestion, id, authedUser } = this.props;
-    console.log(questions[id]);
     return (
       <div className="question">
-        {questions[id] ?
+        {questions[id] ? (
           <Fragment>
             <div className="question__author">
               {users[questions[id].author].name} asks:
@@ -23,7 +22,10 @@ class Question extends Component {
                   <QuestionPeek question={questions[id]} />
                 ) : questions[id].optionOne.votes.includes(authedUser) ||
                   questions[id].optionTwo.votes.includes(authedUser) ? (
-                  <QuestionPoll question={questions[id]} authedUser={authedUser} />
+                  <QuestionPoll
+                    question={questions[id]}
+                    authedUser={authedUser}
+                  />
                 ) : (
                   <QuestionAnswer
                     question={questions[id]}
@@ -33,7 +35,9 @@ class Question extends Component {
               </div>
             </div>
           </Fragment>
-          : 'Question does not exist'}
+        ) : (
+          "Question does not exist"
+        )}
       </div>
     );
   }

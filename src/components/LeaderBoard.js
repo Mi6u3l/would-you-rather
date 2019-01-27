@@ -7,38 +7,48 @@ class LeaderBoard extends Component {
     const { usersList } = this.props;
     return (
       <div className="leaderboard">
-         <ul>
-          {usersList
-            .map(user => (
+        <ul>
+          {usersList.map(user => (
             <li key={user.id}>
               <div className="leaderboard__wrapper">
                 <Avatar user={user} />
                 <div className="leaderboard__details">
                   <span className="leaderboard__name">{user.name}</span>
                   <div className="leaderboard__results">
-                    <div>Answered questions: {Object.keys(user.answers).length}</div>
-                    <div>Created questions: {Object.keys(user.questions).length}</div>
+                    <div>
+                      Answered questions: {Object.keys(user.answers).length}
+                    </div>
+                    <div>
+                      Created questions: {Object.keys(user.questions).length}
+                    </div>
                     <div className="leaderboard__total">
-                      Total: {Object.keys(user.answers).length + Object.keys(user.questions).length}
+                      Total:{" "}
+                      {Object.keys(user.answers).length +
+                        Object.keys(user.questions).length}
                     </div>
                   </div>
                 </div>
               </div>
             </li>
           ))}
-          </ul>  
+        </ul>
       </div>
     );
   }
 }
 
 function mapStateToProps({ users }) {
-  const usersList = Object.keys(users).map((key) => {
-    return users[key]
-  }).sort((a, b) => {
-    return (Object.keys(b.questions).length + Object.keys(b.answers).length) - 
-    (Object.keys(a.questions).length + Object.keys(a.answers).length)
-  })
+  const usersList = Object.keys(users)
+    .map(key => {
+      return users[key];
+    })
+    .sort((a, b) => {
+      return (
+        Object.keys(b.questions).length +
+        Object.keys(b.answers).length -
+        (Object.keys(a.questions).length + Object.keys(a.answers).length)
+      );
+    });
   return {
     usersList
   };
